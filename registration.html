@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MCA Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    .container {
+      width: 100%;
+      margin: auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      background-color:lightcoral;
+      color: white;
+      padding: 30px;
+    }
+    h3{
+      text-align: center;
+      font-family: monospace;
+      background-image: linear-gradient(to right, #ff7e5f, #feb47b);
+    }
+    label {
+      display: inline-block;
+      width: 150px;
+      text-align: right;
+      margin-right: 10px;
+    }
+    input, select, textarea {
+      vertical-align: middle;
+      width: 50%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid coral;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      width: 50%;
+      margin-left: 25%;
+      background-color: crimson;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    button:hover{
+      background-color: forestgreen;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>MCA Registration Form</h2>
+    <h3>PERSONAL DETAILS</h3>  
+    <form action="/submit_registration" method="post">
+      <table border="1">
+      <tr>
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="fullname" required>
+      </tr>
+      <br>
+      <tr>
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" rows="3" cols="10" required></textarea>
+    </tr>
+    <br>
+    <tr>
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required>
+    </tr>
+    <br>
+    <tr> 
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="">Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+    </tr>
+    <br>
+    <tr>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      </tr>
+<br>
+      <tr>
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required>
+      </tr>
+    <br>
+      <tr>
+      <label for="religion">Religion:</label>
+      <input type="text" name="religion">
+      </tr>
+      <br>
+      <tr>
+      <label for="caste">Caste:</label>
+      <input type="text" name="caste">
+    </tr>
+    <br>
+    <tr>
+      <label for="nationality">Nationality:</label>
+      <input type="text" name="nationality">
+     </tr>
+    <br> 
+  <h3>EDUCATIONAL DETAILS</h3>
+  <tr>
+      <label for="qualification">Educational Qualification:</label>
+      <input type="text" id="qualification" name="qualification" required>
+  </tr>
+  <br>
+  <tr>
+      <label for="university">University Name:</label>
+      <input type="text" id="university" name="university" required>
+  </tr><br>
+  <tr>
+      <label for="College">College Name:</label>
+      <input type="text" id="College" name="College" required>
+  </tr><br>
+  <tr>
+      <label for="year">Year of Graduation:</label>
+      <input type="number" id="year" name="year" min="2000" max="2025" required> 
+  </tr><br>
+  <tr>
+     <label for="regno">University Register No:</label>
+     <input type="number" name="regno" required>
+  </tr><br>
+  <tr>
+     <label for="mark">Total UG Mark:</label>
+     <input type="number" name="mark" required>
+  </tr><br>
+  <tr>
+     <label for="cgpa">UG CGPA:</label>
+     <input type="number" name="cgpa" required>
+  </tr><br>         
+  <h3>PARENT DETAILS</h3>
+  <tr>
+    <label for="fname">Father's Name:</label>
+    <input type="text" name="fanme" required>
+  </tr><br> 
+  <tr>
+    <label for="mname">Mother's Name:</label>
+    <input type="text" name="manme" required>
+   </tr><br>
+   <tr>
+    <label for="foccupation">Father's Occupation:</label>
+    <input type="text" name="foccupation"> 
+   </tr><br>
+   <tr>
+     <label for="moccupation">Mother's Occupation:</label>
+     <input type="text" name="moccupation"> 
+   </tr><br>
+   <tr>
+    <label for="fno">Father's No:</label>
+    <input type="number" name="fno" required>
+   </tr><br>
+   <tr>
+    <label for="mno">Mother's No:</label>
+    <input type="number" name="mno" required>
+   </tr><br> 
+      <button type="submit">Register</button>
+  </table>
+    </form>
+  </div>
+</body>
+</html>
