@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Simple Web Development Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .quiz-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .question-box {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .question-box p {
+            font-weight: bold;
+            margin-top: 0;
+            color: #555;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        #submitBtn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #submitBtn:hover {
+            background-color: #0056b3;
+        }
+        #results {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px dashed #28a745;
+            border-radius: 5px;
+            display: none; 
+        }       
+        .excellent { color: #28a745; }
+        .good { color: #ffc107; }   
+        .poor { color: #dc3545; }  
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Web Development Quiz</h1>
+        <form id="quizForm">
+            <div class="question-box">
+                <p>1. What does CSS primarily control?</p>
+                <label><input type="radio" name="q1" value="a"> A. Structure</label>
+                <label><input type="radio" name="q1" value="b"> B. Styling</label>
+                <label><input type="radio" name="q1" value="c"> C. Interactivity</label>
+            </div>
+            <div class="question-box">
+                <p>2. Which tag is used to create an ordered list in HTML?</p>
+                <label><input type="radio" name="q2" value="a"> A. &lt;ul&gt;</label>
+                <label><input type="radio" name="q2" value="b"> B. &lt;list&gt;</label>
+                <label><input type="radio" name="q2" value="c"> C. &lt;ol&gt;</label>
+            </div>
+            <div class="question-box">
+                <p>3. In JavaScript, which symbol is used for single-line comments?</p>
+                <label><input type="radio" name="q3" value="a"> A. &lt;!-- --&gt;</label>
+                <label><input type="radio" name="q3" value="b"> B. //</label>
+                <label><input type="radio" name="q3" value="c"> C. ##</label>
+            </div>
+            <div class="question-box">
+                <p>4. Which property is used to change the background color of an element?</p>
+                <label><input type="radio" name="q4" value="a"> A. color</label>
+                <label><input type="radio" name="q4" value="b"> B. background-color</label>
+                <label><input type="radio" name="q4" value="c"> C. bgcolor</label>
+            </div>
+            <div class="question-box">
+                <p>5. Which language is run by the browser?</p>
+                <label><input type="radio" name="q5" value="a"> A. Python</label>
+                <label><input type="radio" name="q5" value="b"> B. PHP</label>
+                <label><input type="radio" name="q5" value="c"> C. JavaScript</label>
+            </div>           
+            <button type="button" id="submitBtn">Submit Quiz</button>
+        </form>
+        <div id="results">
+            <h2>Quiz Results!</h2>
+            <p id="feedbackDisplay"></p>
+            <p id="scoreDisplay"></p>
+            <button onclick="location.reload()">Retake Quiz</button>
+        </div>
+    </div>
+    <script>
+        const correctAnswers = { q1: 'b', q2: 'c', q3: 'b', q4: 'b', q5: 'c' };
+        const questionNames = ['q1', 'q2', 'q3', 'q4', 'q5'];
+
+        const form = document.getElementById('quizForm');
+        const submitButton = document.getElementById('submitBtn');
+        const resultsDiv = document.getElementById('results');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const feedbackDisplay = document.getElementById('feedbackDisplay'); 
+        
+        function getFeedback(score, total) {
+            const percentage = (score / total) * 100;
+            if (percentage === 100) {
+                return {
+                    message: "Perfect Score! Congratulations, you are an expert!",
+                    className: "excellent"
+                };
+            } else if (percentage >= 60) {
+                return {
+                    message: "Good job! You understand the fundamentals well.",
+                    className: "good"
+                };
+            } else {
+                return {
+                    message: "Needs Improvement. Review the basics and try again!",
+                    className: "poor"
+                };
+            }
+        }
+        submitButton.addEventListener('click', function() {
+    var score = 0;
+    var allAnswered = true;
+    var totalQuestions = questionNames.length;
+    for (var i = 0; i < totalQuestions; i++) {
+        var questionName = questionNames[i];
+        var options = form.elements[questionName];
+        var answered = false;
+        for (var j = 0; j < options.length; j++) {
+            if (options[j].checked) {
+                answered = true;
+                break;
+            }
+        }
+        if (!answered) {
+            allAnswered = false;
+            break;
+        }
+    }
+    if (!allAnswered) {
+        alert('Please answer all questions before submitting the quiz!');
+        return;
+    }
+    for (var i = 0; i < totalQuestions; i++) {
+        var questionName = questionNames[i];
+        var options = form.elements[questionName];
+        var correctAnswer = correctAnswers[questionName];
+        for (var j = 0; j < options.length; j++) {
+            if (options[j].checked && options[j].value === correctAnswer) {
+                score++;
+                break;
+            }
+        }
+    }
+    alert('You scored ' + score + ' out of ' + totalQuestions);
+
+            const feedback = getFeedback(score, totalQuestions);
+            form.style.display = 'none';
+            submitButton.style.display = 'none';
+            scoreDisplay.innerHTML = `You scored <strong>${score}</strong> out of <strong>${totalQuestions}</strong>!`;
+            feedbackDisplay.innerHTML = feedback.message;
+            feedbackDisplay.className = feedback.className;
+            resultsDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

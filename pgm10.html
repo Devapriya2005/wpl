@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image and Text Hover with JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f0f0f0;
+    }
+
+    #hover-box {
+      width: 300px;
+      height: 250px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #hover-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(100, 123, 255, 245);
+    }
+
+    #hover-box img {
+      width: 80%;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    #hover-box p {
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hover New Image and Text When Mouse Comes Over</h1>
+
+  <div id="hover-box">
+    <img id="main-image" src="car.png" alt="car">
+    <p id="main-text">Look! It's a car !!</p>
+  </div>
+
+  <script>
+    const hoverBox = document.getElementById('hover-box');
+    const mainImage = document.getElementById('main-image');
+    const mainText = document.getElementById('main-text');
+
+    hoverBox.addEventListener('mouseenter', () => {
+      mainImage.src = 'bike.png';
+      mainImage.alt = 'bike';
+      mainText.textContent = "Now, It's a bike!!";
+    });
+
+    hoverBox.addEventListener('mouseleave', () => {
+      mainImage.src = 'car.png';
+      mainImage.alt = 'car';
+      mainText.textContent = "Look! It's a car !!";
+    });
+  </script>
+
+</body>
+</html>

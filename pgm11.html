@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form validation</title>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 100PX;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #registrationForm {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+  }
+
+  input[type="text"],
+  input[type="password"],input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="number"]:focus {
+    border-color: #007BFF;
+    outline: none;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  </style>
+</head>
+<body>
+  <form id="registrationForm" name="myForm" onsubmit="return validateForm()">
+   <h2>Registration Form</h2>
+    <label>Name:</label>
+    <input type="text" id="name" name="fname" />
+    
+
+    <label>Email:</label>
+    <input type="text" id="email" name="email"/>
+  
+
+    <label>Password:</label>
+    <input type="password" id="password" name="password"/>
+   
+
+    <label>Mobile Number:</label>
+    <input type="number" id="mobile" name="mobileno" />
+ 
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    function validateForm() {
+
+      var name=document.myForm.fname.value;
+      var pattern = /^[a-zA-Z\s]{1,50}$/;
+      var x=document.myForm.email.value;
+      var atposition=x.indexOf("@");
+      var dotposition=x.lastIndexOf(".");
+      var password=document.myForm.password.value;
+      var mobile=document.myForm.mobileno.value;
+      
+
+      // Name validation
+      if (name === "") {
+        alert("Name must be filled out");
+        return false;
+      }
+      else if(pattern.test(name) === false) {
+        alert("Please enter a valid name");
+        return false;
+      }  
+     // Email validation
+     if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length) {
+         alert("Please enter a valid e-mail address \natpostion:"+atposition+"\ndotposition:"+dotposition);
+         return false;
+      }
+      // Password validation     
+      if(password.length<6) {
+        alert("Password must be at least 6 characters long.");
+        return false;
+      }
+      // Mobile number validation
+      if (isNaN(mobile) || mobile.length!=10) {
+        alert("Please enter a valid mobile number!")
+        return false;
+      }
+      alert("Registration successful!");
+      return true;
+    }
+  </script>
+</body>
+</html>

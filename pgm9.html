@@ -1,0 +1,65 @@
+<html>
+<head>
+  <title>Change Background Colour on Mouse Click</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    #container {
+      width: 600px;
+      height: 400px;
+      margin: 80px auto;
+      padding: 40px;
+      text-align: center;
+      border: 1px solid black;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+      transition: background-color 0.5s ease;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+      cursor: pointer;
+      padding: 10px 20px;
+      background-color: maroon;
+      color: white;
+      display: inline-block;
+      border: 5px solid black;
+      transition: background-color 0.3s ease;
+    }
+
+    p:hover {
+      background-color: crimson;
+      color:black;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <h1>Change Background Color</h1>
+    <p id="trigger">Click HERE to change the background colour!!!</p>
+  </div>
+
+  <script>
+    const container = document.getElementById('container');
+    const trigger = document.getElementById('trigger');
+
+    trigger.addEventListener('click', () => {
+      const colors = ['red', 'green', 'blue'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      container.style.backgroundColor = randomColor;
+    });
+  </script>
+
+</body>
+</html>

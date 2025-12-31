@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JavaScript String and Math Functions</title>
+  <style>
+    body {
+          font-family: Arial,sans-serif;
+          margin: 30px;
+    }
+    h2 {
+        color: blue;
+    }
+    .section { 
+              margin-bottom: 30px;
+    }
+    .output { 
+             background: #f4f4f4;
+             padding: 20px; 
+             line-height:1.5;
+             border: 1px solid #ccc; 
+             margin-top: 10px; 
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript String and Math Functions</h1>
+
+  <div class="section">
+    <h2>String Functions</h2>
+    <script>
+      let str = "Hello, JavaScript!";
+      let txt = "Welcome!";
+      let stringResults = "Original String: " + str + "\n" +
+        "Length: " + str.length + "\n" +
+        "Slice (0, 5): " + str.slice(0, 5) + "\n" +
+        "Slice(-12): " + str.slice(-12) + "\n" +
+        "Substring(6,18): " + str.substr(6,18) + "\n" +
+        "Substring(-7): " + str.substr(-7) + "\n" +
+        "Replace 'JavaScript' with 'World': " + str.replace("JavaScript", "World") + "\n" +
+        "Uppercase: " + str.toUpperCase() + "\n" +
+        "Lowercase: " + str.toLowerCase() + "\n" +
+        "Concat: "+ str.concat(" ",txt) + "\n" ;
+     document.write("<div class='output'><pre>" + stringResults + "</pre></div>");
+
+    </script>
+  </div>
+
+  <div class="section">
+    <h2>Math Functions</h2>
+    <script>
+      var num = 7.85;
+      var mathResults = 
+        "Original Number: " + num + "\n" +
+        "Math.round(): " + Math.round(num) + "\n" +
+        "Math.floor(): " + Math.floor(num) + "\n" +
+        "Math.ceil(): " + Math.ceil(num) + "\n" +
+        "Math.trunc(): " + Math.trunc(num) + "\n" +
+        "Math.sign(): " + Math.sign(num) + "\n" +
+        "Math.abs(-4.8): " + Math.abs(-4.8) + "\n" +
+        "Math.log(1): " + Math.log(1) + "\n" +
+        "Math.log10(): " + Math.log10(num) + "\n" +
+        "Math.max(10, 20, 30): " + Math.max(10, 20, 30) + "\n" +
+        "Math.min(10, 20, 30): " + Math.min(10, 20, 30) + "\n" +
+        "Math.random(): " + Math.random() + "\n" +
+        "Math.pow(2, 3): " + Math.pow(2, 3) + "\n" +
+        "Math.sqrt(49): " + Math.sqrt(49) + "\n" +
+        "Math.abs(-15): " + Math.abs(-15);
+
+      document.write("<div class='output'><pre>" + mathResults + "</pre></div>"); 
+    </script>
+  </div>
+</body>
+</html>
